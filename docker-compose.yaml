@@ -1,0 +1,13 @@
+version: "2.0"
+services:
+  app:
+    # build: CGO_ENABLED=0 GOOS=linux go build -o app cmd/prometheus/main.go
+    image: alpine:3.9
+    volumes: ["./app:/app"]
+    command: "/app"
+  agent:
+    image: "datadog/agent:latest"
+    links: ["app"]
+    volumes: ["./datadog.yaml:/etc/datadog-agent/conf.d/prometheus.d/conf.yaml"]
+    environment:
+      - DD_API_KEY=6d72d634b7aa80effdc1c20c0640b320

@@ -1,0 +1,13 @@
+# ref: https://github.com/DataDog/integrations-core/blob/master/prometheus/datadog_checks/prometheus/data/conf.yaml.example
+
+instances:
+  - prometheus_url: http://app:8484/metrics
+    namespace: "a4"
+    metrics:
+      - at_*
+      - my*
+      - go_*
+      - process_*
+    send_histograms_buckets: true
+    health_service_check: false
+    prometheus_timeout: 10
